@@ -11,9 +11,18 @@
 |`boot`          | 初始化包   | 用于项目初始化参数设置。
 |`conf`          | 配置管理   | 所有的配置文件存放目录。
 |`docker`        | 镜像文件   | Docker镜像相关依赖文件，脚本文件等等。
+|`docs`          | swag文件  | swagger文件。
 |`document`      | 项目文档   | Document项目文档，如: 设计文档、帮助文档等等。
 |`library`       | 公共库包   | 公共的功能封装包，往往不包含业务需求实现。
 |`router`        | 路由注册   | 用于路由统一的注册管理。
 |`Dockerfile`    | 镜像描述   | 云原生时代用于编译生成Docker镜像的描述文件。
 |`go.mod`        | 依赖管理   | 使用`Go Module`包管理的依赖描述文件。
 |`main.go`       | 入口文件   | 程序入口文件。
+
+## swag
+
+生成 swagger文件
+
+```linux
+swag init -g=./main.go
+```

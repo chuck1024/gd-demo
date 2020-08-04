@@ -1,0 +1,39 @@
+definitions:
+  user.DemoTestReq:
+    properties:
+      msg:
+        type: string
+      name:
+        type: string
+    type: object
+  user.DemoTestResp:
+    properties:
+      msg:
+        type: string
+    type: object
+info:
+  contact: {}
+  license: {}
+paths:
+  /v1/test:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: 请求参数
+        in: body
+        name: entity
+        required: true
+        schema:
+          $ref: '#/definitions/user.DemoTestReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/user.DemoTestResp'
+      summary: 测试一下
+      tags:
+      - 用户
+swagger: "2.0"
