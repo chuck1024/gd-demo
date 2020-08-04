@@ -31,7 +31,10 @@ func Register(e *gd.Engine) {
 		)
 
 		// swagger
-		r.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
+		ok, _ := e.Config("Swagger","swagger").Bool()
+		if ok {
+			r.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
+		}
 		return route(e, r)
 	})
 }
