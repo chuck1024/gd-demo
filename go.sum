@@ -20,6 +20,8 @@ github.com/chuck1024/dlog v0.0.0-20200804032506-74d3b3b23cd4 h1:1+n7UtMJcZmDadti
 github.com/chuck1024/dlog v0.0.0-20200804032506-74d3b3b23cd4/go.mod h1:nAHCZv0fLAjOHfUJM2DH7KEC5XT8Mh47ux54I6FQMl8=
 github.com/chuck1024/gd v0.0.0-20200804061027-1657de8a712d h1:W6zdZ64lWYX7HeDZXrRYkIZyJYb85lFgYrYMmh+XXN8=
 github.com/chuck1024/gd v0.0.0-20200804061027-1657de8a712d/go.mod h1:VUT5S0TwAZCcVvULp0atD+6Tsa/4tx2AxcAPVmfK0RY=
+github.com/chuck1024/gd v0.0.0-20200804101011-5af28b7b2aa3 h1:+tY1l9lvtRs3yh5jIgyotaHucst5q51ZMlwbAXfMOak=
+github.com/chuck1024/gd v0.0.0-20200804101011-5af28b7b2aa3/go.mod h1:VUT5S0TwAZCcVvULp0atD+6Tsa/4tx2AxcAPVmfK0RY=
 github.com/chuck1024/gl v0.0.0-20200114031106-5a09ab9144f9 h1:YZoTDvRED06MBAJT6gANcH4Cpv+Nz8Q7CIj7ogekIt4=
 github.com/chuck1024/gl v0.0.0-20200114031106-5a09ab9144f9/go.mod h1:5av27aHS4QFiWviPxvJ7+D2UDZAmp1SdjsJGelNcpow=
 github.com/chuck1024/inject v0.0.0-20200527023646-6b076a7f0cfc h1:cdj3w3tyRoFNhuVg/G/xxk5AHWjUY8a5Jsmv65Jgrgs=

@@ -9,8 +9,10 @@ import (
 	"github.com/chuck1024/dlog"
 	"github.com/chuck1024/gd"
 	"github.com/chuck1024/gd-demo/app/model"
+	"github.com/chuck1024/gd-demo/app/service/sp"
 	"github.com/chuck1024/gd-demo/route"
 	"github.com/chuck1024/inject"
+	"github.com/chuck1024/mysqldb"
 )
 
 func Run() {
@@ -21,8 +23,17 @@ func Run() {
 	inject.InitDefault()
 	defer inject.Close()
 
-	// inject userDao
-	inject.Reg("UserDao", (*model.UserDao)(&model.UserDao{MysqlClient: }))
+	// inject UserDao
+	inject.Reg("UserDao", (*model.UserDao)(&model.UserDao{MysqlClient: &mysqldb.MysqlClient{
+		DbConfPath: "conf/db.ini",
+	}}))
+
+	// inject dependency
+	inject.RegisterOrFail("serviceProvider", (*sp.ServiceProvider)(nil))
+	err := sp.Init()
+	if err != nil {
+		dlog.Crash("init package sp fail,err=%v", err)
+	}
 
 	// route register
 	route.Register(d)

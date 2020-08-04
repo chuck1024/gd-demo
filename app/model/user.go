@@ -8,6 +8,7 @@ package model
 import (
 	"github.com/chuck1024/dlog"
 	"github.com/chuck1024/mysqldb"
+	"time"
 )
 
 type User struct {
@@ -15,11 +16,15 @@ type User struct {
 	Passport string `json:"passport" mysqlField:"passport"`
 	Password uint64 `json:"password" mysqlField:"password"`
 	Nickname string `json:"nickname" mysqlField:"nickname"`
-	CreateTs uint64 `json:"create_time" mysqlField:"create_time"`
+	CreateTs int64  `json:"create_time" mysqlField:"create_time"`
 }
 
 type UserDao struct {
 	MysqlClient *mysqldb.MysqlClient `inject:"mysqlClient"`
+}
+
+func (u *UserDao) Start () error {
+	return u.MysqlClient.Start()
 }
 
 func (u *UserDao) Insert(passport string, password uint64, nickName string) error {
@@ -27,6 +32,7 @@ func (u *UserDao) Insert(passport string, password uint64, nickName string) erro
 		Passport: passport,
 		Password: password,
 		Nickname: nickName,
+		CreateTs: time.Now().Unix(),
 	}
 
 	if err := u.MysqlClient.Add("user", insert, true); err != nil {

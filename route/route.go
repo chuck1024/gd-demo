@@ -46,6 +46,7 @@ func route(e *gd.Engine, r *gin.RouterGroup) error {
 		g.Use(middleware.Cors())
 
 		e.HttpServer.DefaultAddHandler("test", api.DemoTest)
+		e.HttpServer.DefaultAddHandler("getUserInfo", api.GetUserInfo)
 
 		for path, fun := range e.HttpServer.DefaultHandlerMap {
 			f, err := dhttp.Wrap(fun)
