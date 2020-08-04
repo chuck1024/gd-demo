@@ -4,3 +4,9 @@
  */
 
 package main
+
+import "github.com/chuck1024/gd-demo/boot"
+
+func main() {
+	boot.Run()
+}
