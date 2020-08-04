@@ -25,6 +25,39 @@ var doc = `{
     "host": "{{.Host}}",
     "basePath": "{{.BasePath}}",
     "paths": {
+        "/v1/getUserInfo": {
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "用户"
+                ],
+                "summary": "获取用户信息",
+                "parameters": [
+                    {
+                        "description": "请求参数",
+                        "name": "entity",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/user.GetUserInfoReq"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/user.GetUserInfoRes"
+                        }
+                    }
+                }
+            }
+        },
         "/v1/test": {
             "post": {
                 "consumes": [
@@ -76,6 +109,28 @@ var doc = `{
             "properties": {
                 "msg": {
                     "type": "string"
+                }
+            }
+        },
+        "user.GetUserInfoReq": {
+            "type": "object",
+            "properties": {
+                "passport": {
+                    "type": "string"
+                }
+            }
+        },
+        "user.GetUserInfoRes": {
+            "type": "object",
+            "properties": {
+                "nickname": {
+                    "type": "string"
+                },
+                "passport": {
+                    "type": "string"
+                },
+                "password": {
+                    "type": "integer"
                 }
             }
         }

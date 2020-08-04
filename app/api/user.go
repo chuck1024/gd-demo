@@ -27,6 +27,13 @@ func DemoTest(c *gin.Context, req *user.DemoTestReq)(code int, message string, e
 	return http.StatusOK, "ok", nil, ret
 }
 
+// @Summary 获取用户信息
+// @Tags 用户
+// @Accept application/json
+// @Produce json
+// @Param entity body user.GetUserInfoReq true "请求参数" required
+// @Router /v1/getUserInfo [post]
+// @Success 200 {object} user.GetUserInfoRes
 func GetUserInfo(c *gin.Context, req *user.GetUserInfoReq)(code int, message string, err error, ret *user.GetUserInfoRes) {
 	if req.Passport == "" {
 		return http.StatusBadRequest, "passport null", nil, nil

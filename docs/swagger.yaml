@@ -11,10 +11,45 @@ definitions:
       msg:
         type: string
     type: object
+  user.GetUserInfoReq:
+    properties:
+      passport:
+        type: string
+    type: object
+  user.GetUserInfoRes:
+    properties:
+      nickname:
+        type: string
+      passport:
+        type: string
+      password:
+        type: integer
+    type: object
 info:
   contact: {}
   license: {}
 paths:
+  /v1/getUserInfo:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: 请求参数
+        in: body
+        name: entity
+        required: true
+        schema:
+          $ref: '#/definitions/user.GetUserInfoReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/user.GetUserInfoRes'
+      summary: 获取用户信息
+      tags:
+      - 用户
   /v1/test:
     post:
       consumes:
