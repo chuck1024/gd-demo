@@ -45,5 +45,5 @@ func GetUserInfo(c *gin.Context, req *user.GetUserInfoReq)(code int, message str
 		return
 	}
 
-	return
+	return http.StatusOK, "ok", nil, ret
 }
