@@ -26,3 +26,22 @@
 ```linux
 swag init -g=./main.go
 ```
+
+## docker 运行
+
+```bash
+# 编译程序
+CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build main.go
+
+# docker build 镜像
+docker build -t main .
+
+# docker 运行程序
+docker run -p 10240:10240 -d main ./serve.sh
+
+# docker ps
+docker ps
+
+# kill 该进程 xxxxxx:CONTAINER ID
+dokcer kill xxxxxx
+```

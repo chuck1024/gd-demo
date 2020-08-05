@@ -13,10 +13,6 @@ ENV APP_PATH $APP_ROOT/$APP_NAME
 ENV LOG_ROOT /var/log/
 ENV LOG_PATH /var/log/$APP_NAME
 
-###############################################################################
-#                                   START
-###############################################################################
-
 # 执行入口文件添加
 WORKDIR $APP_PATH
 RUN mkdir conf
