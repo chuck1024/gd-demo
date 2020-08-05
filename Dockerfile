@@ -6,18 +6,18 @@ LABEL maintainer="chuck.ch1024@outlook.com"
 #                                INSTALLATION
 ###############################################################################
 
-# 设置固定的项目路径
-ENV WORKDIR /home/work/app/gd-demos
-
-# 添加应用可执行文件，并设置执行权限
-ADD ./bin/linux_amd64/main   $WORKDIR/main
-RUN chmod +x $WORKDIR/main
-
-# 添加配置文件
-ADD conf   $WORKDIR/conf
+# 环境变量设置
+ENV APP_NAME gd-demo
+ENV APP_ROOT /var/www
+ENV APP_PATH $APP_ROOT/$APP_NAME
+ENV LOG_ROOT /var/log/
+ENV LOG_PATH /var/log/$APP_NAME
 
 ###############################################################################
 #                                   START
 ###############################################################################
-WORKDIR $WORKDIR
-CMD ./main
+
+# 执行入口文件添加
+ADD ./main $APP_PATH/
+ADD ./docker/*.sh /bin/
+RUN chmod +x /bin/*.sh
