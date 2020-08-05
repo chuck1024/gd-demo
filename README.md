@@ -37,7 +37,7 @@ CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build main.go
 docker build -t main .
 
 # docker 运行程序
-docker run -p 10240:10240 -d main ./serve.sh
+docker run -p 10240:10240 -d main ./server.sh
 
 # docker ps
 docker ps
