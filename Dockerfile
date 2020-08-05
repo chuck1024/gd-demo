@@ -18,6 +18,9 @@ ENV LOG_PATH /var/log/$APP_NAME
 ###############################################################################
 
 # 执行入口文件添加
+WORKDIR $APP_PATH
+RUN mkdir conf
+ADD conf $APP_PATH/conf
 ADD ./main $APP_PATH/
-ADD ./docker/*.sh /bin/
-RUN chmod +x /bin/*.sh
+ADD ./docker/*.sh $APP_PATH/
+RUN chmod +x $APP_PATH/*.sh
