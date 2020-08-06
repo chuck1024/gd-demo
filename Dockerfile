@@ -2,10 +2,6 @@ FROM loads/alpine:3.8
 
 LABEL maintainer="chuck.ch1024@outlook.com"
 
-###############################################################################
-#                                INSTALLATION
-###############################################################################
-
 # 环境变量设置
 ENV APP_NAME gd-demo
 ENV APP_ROOT /var/www
