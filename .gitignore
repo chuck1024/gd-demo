@@ -17,3 +17,4 @@
 log/*
 prof/*
 dumpPanic.-dump-*
+conf/log.xml
