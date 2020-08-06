@@ -21,6 +21,7 @@ func Run() {
 
 	// init inject
 	inject.InitDefault()
+	inject.SetLogger(dlog.Global)
 	defer inject.Close()
 
 	// inject UserDao
