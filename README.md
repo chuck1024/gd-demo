@@ -18,6 +18,7 @@
 |`Dockerfile`    | 镜像描述   | 云原生时代用于编译生成Docker镜像的描述文件。
 |`go.mod`        | 依赖管理   | 使用`Go Module`包管理的依赖描述文件。
 |`main.go`       | 入口文件   | 程序入口文件。
+|`Makefile`      | make文件  | makefile。
 
 ## swag
 
