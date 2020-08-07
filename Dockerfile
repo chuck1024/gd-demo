@@ -13,6 +13,6 @@ ENV LOG_PATH /var/log/$APP_NAME
 WORKDIR $APP_PATH
 RUN mkdir conf
 ADD conf $APP_PATH/conf
-ADD ./main $APP_PATH/
+ADD ./$APP_NAME $APP_PATH/
 ADD ./docker/*.sh $APP_PATH/
 RUN chmod +x $APP_PATH/*.sh

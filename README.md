@@ -35,7 +35,7 @@ http://127.0.0.1:10240/seagger/index.html
 
 ```bash
 # 编译程序
-CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build main.go
+CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o gd-demo main.go
 
 # docker build 镜像
 docker build -t gd-demo .

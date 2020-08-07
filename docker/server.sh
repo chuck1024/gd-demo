@@ -7,4 +7,4 @@ mkdir -p $LOG_PATH
 chmod 777 -R $LOG_PATH
 
 # 运行程序
-$APP_PATH/main
+$APP_PATH/$APP_NAME
