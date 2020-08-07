@@ -45,28 +45,16 @@ func route(e *gd.Engine, r *gin.RouterGroup) error {
 		g := r.Group("v1")
 		g.Use(middleware.Cors())
 
-		e.HttpServer.DefaultAddHandler("test", api.DemoTest)
-		e.HttpServer.DefaultAddHandler("register", api.RegisterOrUpdate)
-		e.HttpServer.DefaultAddHandler("login", api.Login)
-
-		for path, fun := range e.HttpServer.DefaultHandlerMap {
-			f, err := dhttp.Wrap(fun)
-			if err != nil {
-				ret = err
-				return
-			}
-
-			g.GET(path, f)
-			g.POST(path, f)
-		}
+		e.HttpServer.POST(g, "test", api.DemoTest)
+		e.HttpServer.POST(g, "register", api.RegisterOrUpdate)
+		e.HttpServer.POST(g, "login", api.Login)
 
 		g.Use(middleware.Auth())
-		f, err := dhttp.Wrap(api.GetUserInfo)
-		if err != nil {
-			ret = err
+		e.HttpServer.GET(g, "getUserInfo", api.GetUserInfo)
+
+		if ret = e.HttpServer.CheckHandle(); ret != nil {
 			return
 		}
-		g.GET("getUserInfo", f)
 	})
 	return ret
 }
