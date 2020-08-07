@@ -38,7 +38,7 @@ func route(e *gd.Engine, r *gin.RouterGroup) error {
 	var ret error
 	initOnce.Do(func() {
 		// swagger
-		ok, _ := e.Config("Swagger", "swagger").Bool()
+		ok := e.Config("Swagger", "swagger").MustBool()
 		if ok {
 			r.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 		}
