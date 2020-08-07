@@ -23,7 +23,7 @@ type UserDao struct {
 	MysqlClient *mysqldb.MysqlClient `inject:"mysqlClient"`
 }
 
-func (u *UserDao) Start () error {
+func (u *UserDao) Start() error {
 	return u.MysqlClient.Start()
 }
 

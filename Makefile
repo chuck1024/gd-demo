@@ -14,4 +14,5 @@ run:
 docker:
 	CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o gd-demo main.go
 	docker build -t gd-demo .
+	rm -rf gd-demo
 	docker run -p 10240:10240 -d gd-demo ./server.sh
