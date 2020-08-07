@@ -30,11 +30,6 @@ func Register(e *gd.Engine) {
 			dhttp.Logger(),
 		)
 
-		// swagger
-		ok, _ := e.Config("Swagger","swagger").Bool()
-		if ok {
-			r.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
-		}
 		return route(e, r)
 	})
 }
@@ -42,6 +37,12 @@ func Register(e *gd.Engine) {
 func route(e *gd.Engine, r *gin.RouterGroup) error {
 	var ret error
 	initOnce.Do(func() {
+		// swagger
+		ok, _ := e.Config("Swagger","swagger").Bool()
+		if ok {
+			r.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
+		}
+
 		g := r.Group("v1")
 		g.Use(middleware.Cors())
 
