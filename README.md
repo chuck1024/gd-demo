@@ -34,10 +34,10 @@ swag init -g=./main.go
 CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build main.go
 
 # docker build 镜像
-docker build -t main .
+docker build -t gd-demo .
 
 # docker 运行程序
-docker run -p 10240:10240 -d main ./server.sh
+docker run -p 10240:10240 -d gd-demo ./server.sh
 
 # docker ps
 docker ps

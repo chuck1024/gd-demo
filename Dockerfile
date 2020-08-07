@@ -1,4 +1,4 @@
-FROM loads/alpine:3.8
+FROM registry.cn-chengdu.aliyuncs.com/godog/alpine:3.8
 
 LABEL maintainer="chuck.ch1024@outlook.com"
 
