@@ -27,6 +27,10 @@
 swag init -g=./main.go
 ```
 
+访问 swagger 
+
+http://127.0.0.1:10240/seagger/index.html
+
 ## docker 运行
 
 ```bash
