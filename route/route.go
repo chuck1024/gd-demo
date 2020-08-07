@@ -24,12 +24,17 @@ var (
 func Register(e *gd.Engine) {
 	e.HttpServer.SetInit(func(g *gin.Engine) error {
 		r := g.Group("")
+		// swagger
+		ok := e.Config("Swagger", "swagger").MustBool()
+		if ok {
+			r.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
+		}
+
 		r.Use(
 			dhttp.GlFilter(),
 			dhttp.GroupFilter(),
 			dhttp.Logger(),
 		)
-
 		return route(e, r)
 	})
 }
@@ -37,17 +42,13 @@ func Register(e *gd.Engine) {
 func route(e *gd.Engine, r *gin.RouterGroup) error {
 	var ret error
 	initOnce.Do(func() {
-		// swagger
-		ok := e.Config("Swagger", "swagger").MustBool()
-		if ok {
-			r.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
-		}
-
 		g := r.Group("v1")
 		g.Use(middleware.Cors())
 
 		e.HttpServer.DefaultAddHandler("test", api.DemoTest)
 		e.HttpServer.DefaultAddHandler("getUserInfo", api.GetUserInfo)
+		e.HttpServer.DefaultAddHandler("register", api.RegisterOrUpdate)
+		e.HttpServer.DefaultAddHandler("login", api.Login)
 
 		for path, fun := range e.HttpServer.DefaultHandlerMap {
 			f, err := dhttp.Wrap(fun)

@@ -13,6 +13,7 @@ import (
 	"github.com/chuck1024/gd-demo/route"
 	"github.com/chuck1024/inject"
 	"github.com/chuck1024/mysqldb"
+	"github.com/chuck1024/redisdb"
 )
 
 func Run() {
@@ -27,6 +28,11 @@ func Run() {
 	// inject UserDao
 	inject.Reg("UserDao", (*model.UserDao)(&model.UserDao{MysqlClient: &mysqldb.MysqlClient{
 		DbConfPath: "conf/db.ini",
+	}}))
+
+	// inject SessionCache
+	inject.Reg("SessionCache", (*model.SessionCache)(&model.SessionCache{RedisConfig: &redisdb.RedisConfig{
+		Addrs:   d.Config("Redis","addr").Strings(","),
 	}}))
 
 	// inject dependency

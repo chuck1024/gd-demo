@@ -14,7 +14,8 @@ import (
 var p *ServiceProvider
 
 type ServiceProvider struct {
-	UserModel *model.UserDao `inject:"UserDao"`
+	UserModel    *model.UserDao      `inject:"UserDao"`
+	SessionCache *model.SessionCache `inject:"SessionCache"`
 }
 
 func Init() error {

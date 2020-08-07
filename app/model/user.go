@@ -11,12 +11,17 @@ import (
 	"time"
 )
 
+var (
+	useTableName = "user"
+)
+
 type User struct {
 	Id       uint64 `json:"id" mysqlField:"id"`
 	Passport string `json:"passport" mysqlField:"passport"`
 	Password uint64 `json:"password" mysqlField:"password"`
 	Nickname string `json:"nickname" mysqlField:"nickname"`
 	CreateTs int64  `json:"create_time" mysqlField:"create_time"`
+	UpdateTs int64  `json:"update_time" mysqlField:"update_time"`
 }
 
 type UserDao struct {
@@ -33,13 +38,34 @@ func (u *UserDao) Insert(passport string, password uint64, nickName string) erro
 		Password: password,
 		Nickname: nickName,
 		CreateTs: time.Now().Unix(),
+		UpdateTs: time.Now().Unix(),
 	}
 
-	if err := u.MysqlClient.Add("user", insert, true); err != nil {
+	if err := u.MysqlClient.Add(useTableName, insert, true); err != nil {
 		dlog.Error("user Insert occur err:%s", err)
 		return err
 	}
 
+	return nil
+}
+
+func (u *UserDao) Update(passport string, password uint64, nickName string) error {
+	where := make(map[string]interface{}, 0)
+	where["passport"] = passport
+
+	updateData := &User{
+		Password: password,
+		Nickname: nickName,
+		UpdateTs: time.Now().Unix(),
+	}
+
+	updateFields := []string{"password", "nickName","update_time"}
+
+	err := u.MysqlClient.Update(useTableName, updateData, where, updateFields)
+	if err != nil {
+		dlog.Error("Update occur err:%s", err)
+		return err
+	}
 	return nil
 }
 
@@ -53,8 +79,8 @@ func (u *UserDao) Query(passport string) (*User, error) {
 	}
 
 	if data == nil {
-		dlog.Error("user Query occur err:%s", err)
-		return nil, err
+		dlog.Info("user Query passport[%v] is nil", passport)
+		return nil, nil
 	}
 
 	dlog.Debug("user Query value:%v", data.(*User))

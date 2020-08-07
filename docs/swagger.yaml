@@ -25,9 +25,32 @@ definitions:
       password:
         type: integer
     type: object
+  user.LoginReq:
+    properties:
+      passport:
+        type: string
+      password:
+        type: integer
+    type: object
+  user.LoginRes:
+    properties:
+      sessionId:
+        type: string
+    type: object
+  user.RegisterOrUpdateReq:
+    properties:
+      nickname:
+        type: string
+      passport:
+        type: string
+      password:
+        type: integer
+    type: object
 info:
   contact: {}
   license: {}
+  title: gd-demo
+  version: "1.0"
 paths:
   /v1/getUserInfo:
     post:
@@ -48,6 +71,45 @@ paths:
           schema:
             $ref: '#/definitions/user.GetUserInfoRes'
       summary: 获取用户信息
+      tags:
+      - 用户
+  /v1/login:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: 请求参数
+        in: body
+        name: entity
+        required: true
+        schema:
+          $ref: '#/definitions/user.LoginReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/user.LoginRes'
+      summary: 用户登录
+      tags:
+      - 用户
+  /v1/register:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: 请求参数
+        in: body
+        name: entity
+        required: true
+        schema:
+          $ref: '#/definitions/user.RegisterOrUpdateReq'
+      produces:
+      - application/json
+      responses:
+        "200": {}
+      summary: 注册或更新用户信息
       tags:
       - 用户
   /v1/test:

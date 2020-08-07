@@ -20,6 +20,8 @@ github.com/chuck1024/dlog v0.0.0-20200804032506-74d3b3b23cd4 h1:1+n7UtMJcZmDadti
 github.com/chuck1024/dlog v0.0.0-20200804032506-74d3b3b23cd4/go.mod h1:nAHCZv0fLAjOHfUJM2DH7KEC5XT8Mh47ux54I6FQMl8=
 github.com/chuck1024/gd v1.6.3 h1:m7oz34dp/GsBE4hFMVrGHp4tDDj63OHev0T6SnXxTe4=
 github.com/chuck1024/gd v1.6.3/go.mod h1:4eR9xDWu3UEr841dNhRsUwAvuhykSY4scp23sbiFD08=
+github.com/chuck1024/gd v1.6.4 h1:UrKuCS2kP1dei27J/jvvs4I2/F160jOxmd4K43JOvpo=
+github.com/chuck1024/gd v1.6.4/go.mod h1:4eR9xDWu3UEr841dNhRsUwAvuhykSY4scp23sbiFD08=
 github.com/chuck1024/gl v0.0.0-20200114031106-5a09ab9144f9 h1:YZoTDvRED06MBAJT6gANcH4Cpv+Nz8Q7CIj7ogekIt4=
 github.com/chuck1024/gl v0.0.0-20200114031106-5a09ab9144f9/go.mod h1:5av27aHS4QFiWviPxvJ7+D2UDZAmp1SdjsJGelNcpow=
 github.com/chuck1024/gl v0.0.0-20200807031608-b7ba680d501d h1:TCmL51CfymRjTWk/PW4vNms50gX9sjXtBoqyhzjGvD8=
@@ -30,6 +32,8 @@ github.com/chuck1024/mysqldb v0.0.0-20200804033418-33924fbc61d2 h1:Z3nUQANf0Bi0C
 github.com/chuck1024/mysqldb v0.0.0-20200804033418-33924fbc61d2/go.mod h1:CYas5RretWJNfHhiljcCaontVAKSL2JqpyqxlEF5d0w=
 github.com/chuck1024/orderedmap v0.0.0-20200526071649-7ff325780588 h1:xdNZ6ptFQcClvSDYhEqeULrJ8T3vm3+JDOIqRiLmZs0=
 github.com/chuck1024/orderedmap v0.0.0-20200526071649-7ff325780588/go.mod h1:oVXpr8pylhL5wJ/9bxp45tj5V7Mtf17t/XvUjUbvnsM=
+github.com/chuck1024/redisdb v0.0.0-20200804033559-06962d0eda93 h1:U1sNWgjf462FADTNYf1Tv3US+3yMH3FhmIlaMzxy+0A=
+github.com/chuck1024/redisdb v0.0.0-20200804033559-06962d0eda93/go.mod h1:fvlBKSpX+hRJ2u7MLSMnoOGNokp2rmMr7u0VImdSvpA=
 github.com/client9/misspell v0.3.4/go.mod h1:qj6jICC3Q7zFZvVWo7KLAzC3yx5G7kyvSDkc90ppPyw=
 github.com/coreos/etcd v3.3.18+incompatible/go.mod h1:uF7uidLiAD3TWHmW31ZFd/JWoc32PjwdhPthX9715RE=
 github.com/coreos/go-systemd v0.0.0-20191104093116-d3cd4ed1dbcf/go.mod h1:F5haX7vjVVG0kc13fIWeqUViNPyEJxv/OmvnBo0Yme4=
@@ -47,6 +51,8 @@ github.com/envoyproxy/protoc-gen-validate v0.1.0/go.mod h1:iSmxcyjqTsJpI2R4NaDN7
 github.com/etcd-io/etcd v3.3.18+incompatible/go.mod h1:cdZ77EstHBwVtD6iTgzgvogwcjo9m4iOqoijouPJ4bs=
 github.com/facebookgo/structtag v0.0.0-20150214074306-217e25fb9691 h1:KnnwHN59Jxec0htA2pe/i0/WI9vxXLQifdhBrP3lqcQ=
 github.com/facebookgo/structtag v0.0.0-20150214074306-217e25fb9691/go.mod h1:sKLL1iua/0etWfo/nPCmyz+v2XDMXy+Ho53W7RAuZNY=
+github.com/garyburd/redigo v1.6.0 h1:0VruCpn7yAIIu7pWVClQC8wxCJEcG3nyzpMSHKi1PQc=
+github.com/garyburd/redigo v1.6.0/go.mod h1:NR3MbYisc3/PwhQ00EMzDiPmrwpPxAn5GI05/YaO1SY=
 github.com/ghodss/yaml v1.0.0/go.mod h1:4dBDuWmgqj2HViK6kFavaiC9ZROes6MMH2rRYeMEF04=
 github.com/gin-contrib/cors v1.3.1 h1:doAsuITavI4IOcd0Y19U4B+O0dNWihRyX//nn4sEmgA=
 github.com/gin-contrib/cors v1.3.1/go.mod h1:jjEJ4268OPZUcU7k9Pm653S7lXUGcqMADzFA61xsmDk=
@@ -93,6 +99,8 @@ github.com/go-playground/universal-translator v0.17.0 h1:icxd5fm+REJzpZx7ZfpaD87
 github.com/go-playground/universal-translator v0.17.0/go.mod h1:UkSxE5sNxxRwHyU+Scu5vgOQjsIJAF8j9muTVoKLVtA=
 github.com/go-playground/validator/v10 v10.2.0 h1:KgJ0snyC2R9VXYN2rneOtQcw5aHQB1Vv0sFl1UcHBOY=
 github.com/go-playground/validator/v10 v10.2.0/go.mod h1:uOYAAleCW8F/7oMFd6aG0GOhaH6EGOAJShg8Id5JGkI=
+github.com/go-redis/redis v6.15.2+incompatible h1:9SpNVG76gr6InJGxoZ6IuuxaCOQwDAhzyXg+Bs+0Sb4=
+github.com/go-redis/redis v6.15.2+incompatible/go.mod h1:NAIEuMOZ/fxfXJIrKDQDz8wamY7mA7PouImQ2Jvg6kA=
 github.com/go-sql-driver/mysql v1.4.1 h1:g24URVg0OFbNUTx9qqY1IRZ9D9z3iPyi5zKhQZpNwpA=
 github.com/go-sql-driver/mysql v1.4.1/go.mod h1:zAC/RDZ24gD3HViQzih4MyKcchzm+sOG5ZlKdlhCg5w=
 github.com/gogo/protobuf v1.3.1/go.mod h1:SlYgWuQ5SjCEi6WLHjHCa1yvBfUnHcTbrrZtXPKa29o=
