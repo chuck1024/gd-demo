@@ -7,8 +7,11 @@ package api
 
 import (
 	"github.com/chuck1024/dlog"
+	"github.com/chuck1024/gd-demo/app/model"
+	"github.com/chuck1024/gd-demo/app/service/middleware"
 	"github.com/chuck1024/gd-demo/app/service/user"
 	"github.com/chuck1024/gd/derror"
+	"github.com/chuck1024/gl"
 	"github.com/gin-gonic/gin"
 	"net/http"
 )
@@ -32,15 +35,21 @@ func DemoTest(c *gin.Context, req *user.DemoTestReq) (code int, message string, 
 // @Tags 用户
 // @Accept application/json
 // @Produce json
-// @Param entity body user.GetUserInfoReq true "请求参数" required
-// @Router /v1/getUserInfo [post]
+// @Param cookie header string true "cookie" required
+// @Router /v1/getUserInfo [get]
 // @Success 200 {object} user.GetUserInfoRes
-func GetUserInfo(c *gin.Context, req *user.GetUserInfoReq) (code int, message string, err error, ret *user.GetUserInfoRes) {
-	if req.Passport == "" {
+func GetUserInfo(c *gin.Context, req interface{}) (code int, message string, err error, ret *user.GetUserInfoRes) {
+	var passport string
+	v, ok := gl.Get(middleware.SessionIdCookie)
+	if ok {
+		passport = v.(*model.Session).Passport
+	}
+
+	if passport == "" {
 		return http.StatusBadRequest, "passport null", nil, nil
 	}
 
-	ret, err = user.GetUserInfo(req.Passport)
+	ret, err = user.GetUserInfo(passport)
 	if err != nil {
 		v, ok := err.(*derror.CodeError)
 		if ok {
@@ -98,5 +107,6 @@ func Login(c *gin.Context, req *user.LoginReq) (code int, message string, err er
 		return http.StatusInternalServerError, err.Error(), err, nil
 	}
 
+	c.SetCookie(middleware.SessionIdCookie, ret.SessionId, 1, "/", "localhost", false, true)
 	return http.StatusOK, "ok", nil, ret
 }

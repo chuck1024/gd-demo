@@ -26,7 +26,7 @@ var doc = `{
     "basePath": "{{.BasePath}}",
     "paths": {
         "/v1/getUserInfo": {
-            "post": {
+            "get": {
                 "consumes": [
                     "application/json"
                 ],
@@ -39,13 +39,11 @@ var doc = `{
                 "summary": "获取用户信息",
                 "parameters": [
                     {
-                        "description": "请求参数",
-                        "name": "entity",
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/user.GetUserInfoReq"
-                        }
+                        "type": "string",
+                        "description": "cookie",
+                        "name": "cookie",
+                        "in": "header",
+                        "required": true
                     }
                 ],
                 "responses": {
@@ -169,14 +167,6 @@ var doc = `{
             "type": "object",
             "properties": {
                 "msg": {
-                    "type": "string"
-                }
-            }
-        },
-        "user.GetUserInfoReq": {
-            "type": "object",
-            "properties": {
-                "passport": {
                     "type": "string"
                 }
             }

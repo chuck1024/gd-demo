@@ -11,11 +11,6 @@ definitions:
       msg:
         type: string
     type: object
-  user.GetUserInfoReq:
-    properties:
-      passport:
-        type: string
-    type: object
   user.GetUserInfoRes:
     properties:
       nickname:
@@ -53,16 +48,15 @@ info:
   version: "1.0"
 paths:
   /v1/getUserInfo:
-    post:
+    get:
       consumes:
       - application/json
       parameters:
-      - description: 请求参数
-        in: body
-        name: entity
+      - description: cookie
+        in: header
+        name: cookie
         required: true
-        schema:
-          $ref: '#/definitions/user.GetUserInfoReq'
+        type: string
       produces:
       - application/json
       responses:

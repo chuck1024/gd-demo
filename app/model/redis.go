@@ -53,7 +53,7 @@ func (c *SessionCache) Get(sessionId string) (v *Session, err error) {
 		return nil, err
 	}
 
-	err = json.Unmarshal([]byte(value), v)
+	err = json.Unmarshal([]byte(value), &v)
 	if err != nil {
 		return nil, err
 	}
