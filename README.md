@@ -49,3 +49,15 @@ docker ps
 # kill 该进程 xxxxxx:CONTAINER ID
 dokcer kill xxxxxx
 ```
+
+## Makefile
+
+当然也可以使用Makefile运行
+
+进入gd-demo直接make，就运行gd-demo服务
+
+如果想在docker运行：
+
+```bash
+make docker
+```
