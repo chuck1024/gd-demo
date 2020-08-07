@@ -6,8 +6,7 @@ LABEL maintainer="chuck.ch1024@outlook.com"
 ENV APP_NAME gd-demo
 ENV APP_ROOT /var/www
 ENV APP_PATH $APP_ROOT/$APP_NAME
-ENV LOG_ROOT /var/log/
-ENV LOG_PATH /var/log/$APP_NAME
+ENV LOG_PATH $APP_ROOT/$APP_NAME/log
 
 # 执行入口文件添加
 WORKDIR $APP_PATH
