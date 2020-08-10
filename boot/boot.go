@@ -39,7 +39,7 @@ func Run() {
 	inject.RegisterOrFail("serviceProvider", (*sp.ServiceProvider)(nil))
 	err := sp.Init()
 	if err != nil {
-		dlog.Crash("init package sp fail,err=%v", err)
+		dlog.Crashf("init package sp fail,err=%v", err)
 	}
 
 	// route register
