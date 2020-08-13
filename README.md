@@ -63,8 +63,12 @@ $> dokcer kill xxxxxx
 
 进入gd-demo直接make，就运行gd-demo服务
 
+```bash
+$> make
+```
+
 如果想在docker运行：
 
 ```bash
-make docker
+$> make docker
 ```
