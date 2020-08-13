@@ -27,8 +27,9 @@ func Auth() gin.HandlerFunc {
 		}
 
 		v, err := sp.Get().SessionCache.Get(sessionId)
-		if err != nil {
+		if err != nil || v == nil {
 			dhttp.Return(c, http.StatusBadRequest,"cookie expire", err, nil)
+			return
 		}
 
 		gl.Set(SessionIdCookie, v)

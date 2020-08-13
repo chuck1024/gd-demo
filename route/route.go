@@ -32,6 +32,7 @@ func Register(e *gd.Engine) {
 
 		r.Use(
 			dhttp.GlFilter(),
+			dhttp.StatFilter(),
 			dhttp.GroupFilter(),
 			dhttp.Logger(),
 		)
