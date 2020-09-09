@@ -43,7 +43,7 @@ func Register(e *gd.Engine) {
 func route(e *gd.Engine, r *gin.RouterGroup) error {
 	var ret error
 	initOnce.Do(func() {
-		g := r.Group("v1")
+		g := r.Group("demo/v1")
 		g.Use(middleware.Cors())
 
 		e.HttpServer.POST(g, "test", api.DemoTest)
