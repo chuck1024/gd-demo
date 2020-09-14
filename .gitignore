@@ -19,3 +19,5 @@ prof/*
 dumpPanic.-dump-*
 conf/log.xml
 go.sum
+gd-demo
+main
