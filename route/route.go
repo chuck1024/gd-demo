@@ -48,6 +48,7 @@ func route(e *gd.Engine, r *gin.RouterGroup) error {
 
 		e.HttpServer.POST(g, "test", api.DemoTest)
 		e.HttpServer.POST(g, "register", api.RegisterOrUpdate)
+		e.HttpServer.POST(g, "update", api.RegisterOrUpdate)
 		e.HttpServer.POST(g, "login", api.Login)
 
 		g.Use(middleware.Auth())
