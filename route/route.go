@@ -27,7 +27,7 @@ func Register(e *gd.Engine) {
 		// swagger
 		ok := e.Config("Swagger", "swagger").MustBool()
 		if ok {
-			r.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
+			r.GET("/demo/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 		}
 
 		r.Use(
