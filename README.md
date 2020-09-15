@@ -70,5 +70,5 @@ $> make
 如果想在docker运行：
 
 ```bash
-$> make docker
+$> make docker_run
 ```
