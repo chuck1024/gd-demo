@@ -7,7 +7,7 @@ package sp
 
 import (
 	"github.com/chuck1024/gd-demo/app/model"
-	"github.com/chuck1024/inject"
+	"github.com/chuck1024/gd/runtime/inject"
 	"github.com/go-errors/errors"
 )
 

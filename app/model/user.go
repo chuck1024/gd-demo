@@ -6,8 +6,8 @@
 package model
 
 import (
-	"github.com/chuck1024/dlog"
-	"github.com/chuck1024/mysqldb"
+	"github.com/chuck1024/gd/databases/mysqldb"
+	"github.com/chuck1024/gd/dlog"
 	"time"
 )
 
@@ -59,7 +59,7 @@ func (u *UserDao) Update(passport string, password uint64, nickName string) erro
 		UpdateTs: time.Now().Unix(),
 	}
 
-	updateFields := []string{"password", "nickName","update_time"}
+	updateFields := []string{"password", "nickName", "update_time"}
 
 	err := u.MysqlClient.Update(useTableName, updateData, where, updateFields)
 	if err != nil {

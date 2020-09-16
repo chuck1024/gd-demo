@@ -6,10 +6,10 @@
 package boot
 
 import (
-	"github.com/chuck1024/dlog"
 	"github.com/chuck1024/gd"
 	"github.com/chuck1024/gd-demo/route"
-	"github.com/chuck1024/inject"
+	"github.com/chuck1024/gd/dlog"
+	"github.com/chuck1024/gd/runtime/inject"
 )
 
 func Run() {

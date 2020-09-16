@@ -1,7 +1,7 @@
 package middleware
 
 import (
-	"github.com/chuck1024/dlog"
+	"github.com/chuck1024/gd/dlog"
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 	"time"

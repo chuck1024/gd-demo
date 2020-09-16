@@ -6,13 +6,13 @@
 package boot
 
 import (
-	"github.com/chuck1024/dlog"
 	"github.com/chuck1024/gd"
 	"github.com/chuck1024/gd-demo/app/model"
 	"github.com/chuck1024/gd-demo/app/service/sp"
-	"github.com/chuck1024/inject"
-	"github.com/chuck1024/mysqldb"
-	"github.com/chuck1024/redisdb"
+	"github.com/chuck1024/gd/databases/mysqldb"
+	"github.com/chuck1024/gd/databases/redisdb"
+	"github.com/chuck1024/gd/dlog"
+	"github.com/chuck1024/gd/runtime/inject"
 )
 
 func Inject(d *gd.Engine) {
@@ -23,7 +23,7 @@ func Inject(d *gd.Engine) {
 
 	// inject SessionCache
 	inject.Reg("SessionCache", (*model.SessionCache)(&model.SessionCache{RedisConfig: &redisdb.RedisConfig{
-		Addrs:   d.Config("Redis","addr").Strings(","),
+		Addrs: d.Config("Redis", "addr").Strings(","),
 	}}))
 
 	// inject dependency

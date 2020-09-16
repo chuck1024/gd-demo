@@ -7,7 +7,7 @@ package model
 
 import (
 	"encoding/json"
-	"github.com/chuck1024/redisdb"
+	"github.com/chuck1024/gd/databases/redisdb"
 )
 
 const (

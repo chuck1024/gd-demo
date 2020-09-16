@@ -6,12 +6,12 @@
 package api
 
 import (
-	"github.com/chuck1024/dlog"
 	"github.com/chuck1024/gd-demo/app/model"
 	"github.com/chuck1024/gd-demo/app/service/middleware"
 	"github.com/chuck1024/gd-demo/app/service/user"
 	"github.com/chuck1024/gd/derror"
-	"github.com/chuck1024/gl"
+	"github.com/chuck1024/gd/dlog"
+	"github.com/chuck1024/gd/runtime/gl"
 	"github.com/gin-gonic/gin"
 	"net/http"
 )
