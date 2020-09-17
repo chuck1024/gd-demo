@@ -3,11 +3,10 @@
     "info": {
         "title": "gd-demo",
         "contact": {},
-        "license": {},
         "version": "1.0"
     },
     "paths": {
-        "/v1/getUserInfo": {
+        "/demo/v1/getUserInfo": {
             "get": {
                 "consumes": [
                     "application/json"
@@ -38,7 +37,7 @@
                 }
             }
         },
-        "/v1/login": {
+        "/demo/v1/login": {
             "post": {
                 "consumes": [
                     "application/json"
@@ -71,7 +70,7 @@
                 }
             }
         },
-        "/v1/register": {
+        "/demo/v1/register": {
             "post": {
                 "consumes": [
                     "application/json"
@@ -99,7 +98,7 @@
                 }
             }
         },
-        "/v1/test": {
+        "/demo/v1/test": {
             "post": {
                 "consumes": [
                     "application/json"

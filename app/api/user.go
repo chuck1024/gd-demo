@@ -21,7 +21,7 @@ import (
 // @Accept application/json
 // @Produce json
 // @Param entity body user.DemoTestReq true "请求参数" required
-// @Router /v1/test [post]
+// @Router /demo/v1/test [post]
 // @Success 200 {object} user.DemoTestResp
 func DemoTest(c *gin.Context, req *user.DemoTestReq) (code int, message string, err error, ret *user.DemoTestResp) {
 	ret = &user.DemoTestResp{
@@ -36,7 +36,7 @@ func DemoTest(c *gin.Context, req *user.DemoTestReq) (code int, message string, 
 // @Accept application/json
 // @Produce json
 // @Param cookie header string true "cookie" required
-// @Router /v1/getUserInfo [get]
+// @Router /demo/v1/getUserInfo [get]
 // @Success 200 {object} user.GetUserInfoRes
 func GetUserInfo(c *gin.Context, req interface{}) (code int, message string, err error, ret *user.GetUserInfoRes) {
 	var passport string
@@ -68,7 +68,7 @@ func GetUserInfo(c *gin.Context, req interface{}) (code int, message string, err
 // @Accept application/json
 // @Produce json
 // @Param entity body user.RegisterOrUpdateReq true "请求参数" required
-// @Router /v1/register [post]
+// @Router /demo/v1/register [post]
 // @Success 200
 func RegisterOrUpdate(c *gin.Context, req *user.RegisterOrUpdateReq) (code int, message string, err error, ret interface{}) {
 	if req.Passport == "" || req.Password == 0 || req.Nickname == "" {
@@ -89,7 +89,7 @@ func RegisterOrUpdate(c *gin.Context, req *user.RegisterOrUpdateReq) (code int, 
 // @Accept application/json
 // @Produce json
 // @Param entity body user.LoginReq true "请求参数" required
-// @Router /v1/login [post]
+// @Router /demo/v1/login [post]
 // @Success 200 {object} user.LoginRes
 func Login(c *gin.Context, req *user.LoginReq) (code int, message string, err error, ret *user.LoginRes) {
 	if req.Passport == "" || req.Password == 0 {

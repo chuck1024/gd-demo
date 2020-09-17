@@ -19,13 +19,12 @@ var doc = `{
         "description": "{{.Description}}",
         "title": "{{.Title}}",
         "contact": {},
-        "license": {},
         "version": "{{.Version}}"
     },
     "host": "{{.Host}}",
     "basePath": "{{.BasePath}}",
     "paths": {
-        "/v1/getUserInfo": {
+        "/demo/v1/getUserInfo": {
             "get": {
                 "consumes": [
                     "application/json"
@@ -56,7 +55,7 @@ var doc = `{
                 }
             }
         },
-        "/v1/login": {
+        "/demo/v1/login": {
             "post": {
                 "consumes": [
                     "application/json"
@@ -89,7 +88,7 @@ var doc = `{
                 }
             }
         },
-        "/v1/register": {
+        "/demo/v1/register": {
             "post": {
                 "consumes": [
                     "application/json"
@@ -117,7 +116,7 @@ var doc = `{
                 }
             }
         },
-        "/v1/test": {
+        "/demo/v1/test": {
             "post": {
                 "consumes": [
                     "application/json"

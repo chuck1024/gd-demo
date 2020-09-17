@@ -43,11 +43,10 @@ definitions:
     type: object
 info:
   contact: {}
-  license: {}
   title: gd-demo
   version: "1.0"
 paths:
-  /v1/getUserInfo:
+  /demo/v1/getUserInfo:
     get:
       consumes:
       - application/json
@@ -67,7 +66,7 @@ paths:
       summary: 获取用户信息
       tags:
       - 用户
-  /v1/login:
+  /demo/v1/login:
     post:
       consumes:
       - application/json
@@ -88,7 +87,7 @@ paths:
       summary: 用户登录
       tags:
       - 用户
-  /v1/register:
+  /demo/v1/register:
     post:
       consumes:
       - application/json
@@ -106,7 +105,7 @@ paths:
       summary: 注册或更新用户信息
       tags:
       - 用户
-  /v1/test:
+  /demo/v1/test:
     post:
       consumes:
       - application/json
