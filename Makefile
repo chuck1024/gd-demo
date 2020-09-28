@@ -22,3 +22,4 @@ docker:
 	docker build -t registry.cn-chengdu.aliyuncs.com/godog/gd-demo .
 	docker tag registry.cn-chengdu.aliyuncs.com/godog/gd-demo registry.cn-chengdu.aliyuncs.com/godog/gd-demo
 	docker push registry.cn-chengdu.aliyuncs.com/godog/gd-demo
+	rm -rf gd-demo
