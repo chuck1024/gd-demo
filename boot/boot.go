@@ -20,14 +20,14 @@ func Run() {
 	inject.InitDefault()
 	inject.SetLogger(dlog.Global)
 	defer inject.Close()
-	Inject(d)
+	Inject()
 
 	// route register
 	route.Register(d)
 
 	// gd run
 	if err := d.Run(); err != nil {
-		dlog.Crashf("gd-demo run occur err:%v", err)
+		gd.Crashf("gd-demo run occur err:%v", err)
 		return
 	}
 }

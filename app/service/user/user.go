@@ -6,10 +6,10 @@
 package user
 
 import (
+	"github.com/chuck1024/gd"
 	"github.com/chuck1024/gd-demo/app/model"
 	"github.com/chuck1024/gd-demo/app/service/sp"
 	"github.com/chuck1024/gd/derror"
-	"github.com/chuck1024/gd/dlog"
 	"github.com/chuck1024/gd/utls"
 	"net/http"
 )
@@ -32,21 +32,21 @@ type RegisterOrUpdateReq struct {
 func RegisterOrUpdate(passport, nickname string, password uint64) error {
 	userInfo, err := sp.Get().UserModel.Query(passport)
 	if err != nil {
-		dlog.Error("RegisterOrUpdate UserModel.Query occur err:%v", err)
+		gd.Error("RegisterOrUpdate UserModel.Query occur err:%v", err)
 		return err
 	}
 
 	if userInfo != nil {
 		err = sp.Get().UserModel.Update(passport, password, nickname)
 		if err != nil {
-			dlog.Error("RegisterOrUpdate UserModel.Update occur er:%v", err)
+			gd.Error("RegisterOrUpdate UserModel.Update occur er:%v", err)
 			return err
 		}
 		return nil
 	}
 
 	if err = sp.Get().UserModel.Insert(passport, password, nickname); err != nil {
-		dlog.Error("RegisterOrUpdate UserModel.Insert occur er:%v", err)
+		gd.Error("RegisterOrUpdate UserModel.Insert occur er:%v", err)
 		return err
 	}
 	return nil
@@ -64,12 +64,12 @@ type LoginRes struct {
 func Login(passport string, password uint64) (*LoginRes, error) {
 	userInfo, err := sp.Get().UserModel.Query(passport)
 	if err != nil {
-		dlog.Error("Login UserModel.Query occur err:%v", err)
+		gd.Error("Login UserModel.Query occur err:%v", err)
 		return nil, err
 	}
 
 	if userInfo == nil {
-		dlog.Info("passport[%v] null", passport)
+		gd.Info("passport[%v] null", passport)
 		return nil, derror.NewCodeError(http.StatusBadRequest, "no data")
 	}
 
@@ -85,7 +85,7 @@ func Login(passport string, password uint64) (*LoginRes, error) {
 	}
 
 	if err = sp.Get().SessionCache.Set(sessionId, sess); err != nil {
-		dlog.Error("Login SessionCache.Set occur err:%v", err)
+		gd.Error("Login SessionCache.Set occur err:%v", err)
 		return nil, derror.MakeCodeError(http.StatusInternalServerError, err)
 	}
 
@@ -105,7 +105,7 @@ type GetUserInfoRes struct {
 func GetUserInfo(passport string) (*GetUserInfoRes, error) {
 	userInfo, err := sp.Get().UserModel.Query(passport)
 	if err != nil {
-		dlog.Error("GetUserInfo UserModel.Query occur err:%v", err)
+		gd.Error("GetUserInfo UserModel.Query occur err:%v", err)
 		return nil, err
 	}
 

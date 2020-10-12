@@ -6,11 +6,11 @@
 package api
 
 import (
+	"github.com/chuck1024/gd"
 	"github.com/chuck1024/gd-demo/app/model"
 	"github.com/chuck1024/gd-demo/app/service/middleware"
 	"github.com/chuck1024/gd-demo/app/service/user"
 	"github.com/chuck1024/gd/derror"
-	"github.com/chuck1024/gd/dlog"
 	"github.com/chuck1024/gd/runtime/gl"
 	"github.com/gin-gonic/gin"
 	"net/http"
@@ -21,7 +21,7 @@ import (
 // @Accept application/json
 // @Produce json
 // @Param entity body user.DemoTestReq true "请求参数" required
-// @Router /demo/v1/test [post]
+// @Router /demo/v1/test [get]
 // @Success 200 {object} user.DemoTestResp
 func DemoTest(c *gin.Context, req *user.DemoTestReq) (code int, message string, err error, ret *user.DemoTestResp) {
 	ret = &user.DemoTestResp{
@@ -56,7 +56,7 @@ func GetUserInfo(c *gin.Context, req interface{}) (code int, message string, err
 			return v.Code(), v.Error(), nil, nil
 		}
 
-		dlog.Error("user.GetUserInfo occur err:%v", err)
+		gd.Error("user.GetUserInfo occur err:%v", err)
 		return http.StatusInternalServerError, err.Error(), err, nil
 	}
 
@@ -77,7 +77,7 @@ func RegisterOrUpdate(c *gin.Context, req *user.RegisterOrUpdateReq) (code int, 
 
 	err = user.RegisterOrUpdate(req.Passport, req.Nickname, req.Password)
 	if err != nil {
-		dlog.Error("RegisterOrUpdate user occur err:%v", err)
+		gd.Error("RegisterOrUpdate user occur err:%v", err)
 		return http.StatusInternalServerError, err.Error(), err, nil
 	}
 
@@ -103,7 +103,7 @@ func Login(c *gin.Context, req *user.LoginReq) (code int, message string, err er
 			return v.Code(), v.Error(), nil, nil
 		}
 
-		dlog.Error("Login user occur err:%v", err)
+		gd.Error("Login user occur err:%v", err)
 		return http.StatusInternalServerError, err.Error(), err, nil
 	}
 

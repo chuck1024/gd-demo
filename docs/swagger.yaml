@@ -106,7 +106,7 @@ paths:
       tags:
       - 用户
   /demo/v1/test:
-    post:
+    get:
       consumes:
       - application/json
       parameters:

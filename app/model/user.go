@@ -6,8 +6,8 @@
 package model
 
 import (
+	"github.com/chuck1024/gd"
 	"github.com/chuck1024/gd/databases/mysqldb"
-	"github.com/chuck1024/gd/dlog"
 	"time"
 )
 
@@ -42,7 +42,7 @@ func (u *UserDao) Insert(passport string, password uint64, nickName string) erro
 	}
 
 	if err := u.MysqlClient.Add(useTableName, insert, true); err != nil {
-		dlog.Error("user Insert occur err:%s", err)
+		gd.Error("user Insert occur err:%s", err)
 		return err
 	}
 
@@ -63,7 +63,7 @@ func (u *UserDao) Update(passport string, password uint64, nickName string) erro
 
 	err := u.MysqlClient.Update(useTableName, updateData, where, updateFields)
 	if err != nil {
-		dlog.Error("Update occur err:%s", err)
+		gd.Error("Update occur err:%s", err)
 		return err
 	}
 	return nil
@@ -74,15 +74,15 @@ func (u *UserDao) Query(passport string) (*User, error) {
 
 	data, err := u.MysqlClient.Query((*User)(nil), query, passport)
 	if err != nil {
-		dlog.Error("user Query occur err:%s", err)
+		gd.Error("user Query occur err:%s", err)
 		return nil, err
 	}
 
 	if data == nil {
-		dlog.Info("user Query passport[%v] is nil", passport)
+		gd.Info("user Query passport[%v] is nil", passport)
 		return nil, nil
 	}
 
-	dlog.Debug("user Query value:%v", data.(*User))
+	gd.Debug("user Query value:%v", data.(*User))
 	return data.(*User), nil
 }

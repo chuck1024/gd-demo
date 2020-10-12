@@ -117,7 +117,7 @@ var doc = `{
             }
         },
         "/demo/v1/test": {
-            "post": {
+            "get": {
                 "consumes": [
                     "application/json"
                 ],

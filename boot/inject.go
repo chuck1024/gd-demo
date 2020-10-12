@@ -15,7 +15,7 @@ import (
 	"github.com/chuck1024/gd/runtime/inject"
 )
 
-func Inject(d *gd.Engine) {
+func Inject() {
 	// inject UserDao
 	inject.Reg("UserDao", (*model.UserDao)(&model.UserDao{MysqlClient: &mysqldb.MysqlClient{
 		DbConfPath: "conf/db.ini",
@@ -23,7 +23,7 @@ func Inject(d *gd.Engine) {
 
 	// inject SessionCache
 	inject.Reg("SessionCache", (*model.SessionCache)(&model.SessionCache{RedisConfig: &redisdb.RedisConfig{
-		Addrs: d.Config("Redis", "addr").Strings(","),
+		Addrs: gd.Config("Redis", "addr").Strings(","),
 	}}))
 
 	// inject dependency
