@@ -12,14 +12,15 @@
 |`conf`          | 配置管理   | 所有的配置文件存放目录。
 |`docker`        | 镜像文件   | Docker镜像相关依赖文件，脚本文件等等。
 |`docs`          | swag文件  | swagger文件。
-|`document`      | 项目文档   | Document项目文档，如: 设计文档、帮助文档等等。
+|`document`      | 项目文档   | Document项目文档，如: 设计文档、帮助文档等等。或者直接存放在wiki，README附上链接地址
 |`library`       | 公共库包   | 公共的功能封装包，往往不包含业务需求实现。
-|`router`        | 路由注册   | 用于路由统一的注册管理。
+|`route`         | 路由注册   | 用于路由统一的注册管理。
 |`test`          | 测试文件   | 用于端到端测试
 |`Dockerfile`    | 镜像描述   | 云原生时代用于编译生成Docker镜像的描述文件。
 |`go.mod`        | 依赖管理   | 使用`Go Module`包管理的依赖描述文件。
 |`main.go`       | 入口文件   | 程序入口文件。
 |`Makefile`      | make文件  | makefile。
+|`README.md`     | README    | README 文件
 
 ## swag
 
@@ -31,7 +32,7 @@ swag init -g=./main.go
 
 访问 swagger 
 
-http://127.0.0.1:10240/swagger/index.html
+[swagger](http://127.0.0.1:10240/demo/v1/swagger/index.html)
 
 ## docker 运行
 
@@ -55,7 +56,7 @@ CONTAINER ID        IMAGE               COMMAND             CREATED             
 $> docker exec -it xxxxxx bash
 
 # kill 该进程 xxxxxx:CONTAINER ID
-$> dokcer kill xxxxxx
+$> docker kill xxxxxx
 ```
 
 ## Makefile
