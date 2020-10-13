@@ -6,9 +6,9 @@
 package boot
 
 import (
+	"gd-demo/app/model"
+	"gd-demo/app/service/sp"
 	"github.com/chuck1024/gd"
-	"github.com/chuck1024/gd-demo/app/model"
-	"github.com/chuck1024/gd-demo/app/service/sp"
 	"github.com/chuck1024/gd/databases/redisdb"
 	"github.com/chuck1024/gd/runtime/inject"
 )

@@ -6,8 +6,8 @@
 package boot
 
 import (
+	"gd-demo/route"
 	"github.com/chuck1024/gd"
-	"github.com/chuck1024/gd-demo/route"
 	"github.com/chuck1024/gd/dlog"
 	"github.com/chuck1024/gd/runtime/inject"
 )

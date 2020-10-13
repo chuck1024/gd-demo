@@ -5,7 +5,7 @@
 
 package main
 
-import "github.com/chuck1024/gd-demo/boot"
+import "gd-demo/boot"
 
 // @title gd-demo
 // @version 1.0

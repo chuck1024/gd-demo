@@ -1,4 +1,4 @@
-module github.com/chuck1024/gd-demo
+module gd-demo
 
 go 1.14
 

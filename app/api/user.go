@@ -6,10 +6,10 @@
 package api
 
 import (
+	"gd-demo/app/model"
+	"gd-demo/app/service/middleware"
+	"gd-demo/app/service/user"
 	"github.com/chuck1024/gd"
-	"github.com/chuck1024/gd-demo/app/model"
-	"github.com/chuck1024/gd-demo/app/service/middleware"
-	"github.com/chuck1024/gd-demo/app/service/user"
 	"github.com/chuck1024/gd/derror"
 	"github.com/chuck1024/gd/runtime/gl"
 	"github.com/gin-gonic/gin"

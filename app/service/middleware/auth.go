@@ -20,15 +20,15 @@ const (
 func Auth() gin.HandlerFunc {
 	return func(c *gin.Context) {
 		sessionId, err := c.Cookie(SessionIdCookie)
-		if err != nil || sessionId == ""{
+		if err != nil || sessionId == "" {
 			c.Abort()
-			dhttp.Return(c, http.StatusForbidden,"no auth", err, nil)
+			dhttp.Return(c, http.StatusForbidden, "no auth", err, nil)
 			return
 		}
 
 		v, err := sp.Get().SessionCache.Get(sessionId)
 		if err != nil || v == nil {
-			dhttp.Return(c, http.StatusBadRequest,"cookie expire", err, nil)
+			dhttp.Return(c, http.StatusBadRequest, "cookie expire", err, nil)
 			return
 		}
 
