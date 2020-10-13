@@ -9,7 +9,6 @@ import (
 	"github.com/chuck1024/gd"
 	"github.com/chuck1024/gd-demo/app/model"
 	"github.com/chuck1024/gd-demo/app/service/sp"
-	"github.com/chuck1024/gd/databases/mysqldb"
 	"github.com/chuck1024/gd/databases/redisdb"
 	"github.com/chuck1024/gd/dlog"
 	"github.com/chuck1024/gd/runtime/inject"
@@ -17,9 +16,7 @@ import (
 
 func Inject() {
 	// inject UserDao
-	inject.Reg("UserDao", (*model.UserDao)(&model.UserDao{MysqlClient: &mysqldb.MysqlClient{
-		DbConfPath: "conf/db.ini",
-	}}))
+	inject.Reg("UserDao", (*model.UserDao)(nil))
 
 	// inject SessionCache
 	inject.Reg("SessionCache", (*model.SessionCache)(&model.SessionCache{RedisConfig: &redisdb.RedisConfig{
