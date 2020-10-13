@@ -29,7 +29,7 @@ type UserDao struct {
 }
 
 func (u *UserDao) Start() error {
-	return u.MysqlClient.Start()
+	return nil
 }
 
 func (u *UserDao) Insert(passport string, password uint64, nickName string) error {

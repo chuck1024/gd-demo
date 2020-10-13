@@ -6,7 +6,7 @@
 package middleware
 
 import (
-	"github.com/chuck1024/gd-demo/app/service/sp"
+	"gd-demo/app/service/sp"
 	"github.com/chuck1024/gd/net/dhttp"
 	"github.com/chuck1024/gd/runtime/gl"
 	"github.com/gin-gonic/gin"
