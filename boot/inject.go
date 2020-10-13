@@ -10,7 +10,6 @@ import (
 	"github.com/chuck1024/gd-demo/app/model"
 	"github.com/chuck1024/gd-demo/app/service/sp"
 	"github.com/chuck1024/gd/databases/redisdb"
-	"github.com/chuck1024/gd/dlog"
 	"github.com/chuck1024/gd/runtime/inject"
 )
 
@@ -27,6 +26,6 @@ func Inject() {
 	inject.RegisterOrFail("serviceProvider", (*sp.ServiceProvider)(nil))
 	err := sp.Init()
 	if err != nil {
-		dlog.Crashf("init package sp fail,err=%v", err)
+		gd.Crashf("init package sp fail,err=%v", err)
 	}
 }
