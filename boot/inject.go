@@ -6,21 +6,23 @@
 package boot
 
 import (
-	"gd-demo/app/model"
 	"gd-demo/app/service/sp"
 	"github.com/chuck1024/gd"
+	"github.com/chuck1024/gd/databases/mysqldb"
 	"github.com/chuck1024/gd/databases/redisdb"
 	"github.com/chuck1024/gd/runtime/inject"
 )
 
 func Inject() {
-	// inject UserDao
-	inject.Reg("UserDao", (*model.UserDao)(nil))
+	// inject demoMysqlClient and init mysql client
+	inject.RegisterOrFail("demoMysqlClient",(*mysqldb.MysqlClient)(&mysqldb.MysqlClient{
+		DataBases: "demo",
+	}))
 
-	// inject SessionCache
-	inject.Reg("SessionCache", (*model.SessionCache)(&model.SessionCache{RedisConfig: &redisdb.RedisConfig{
-		Addrs: gd.Config("Redis", "addr").Strings(","),
-	}}))
+	// inject demoRedisClient and init redis pool client
+	inject.RegisterOrFail("demoRedisClient", (*redisdb.RedisPoolClient)(&redisdb.RedisPoolClient{
+		PoolName: "demo",
+	}))
 
 	// inject dependency
 	inject.RegisterOrFail("serviceProvider", (*sp.ServiceProvider)(nil))

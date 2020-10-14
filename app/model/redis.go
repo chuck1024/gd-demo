@@ -21,15 +21,10 @@ type Session struct {
 }
 
 type SessionCache struct {
-	RedisConfig *redisdb.RedisConfig
-	redisPool   *redisdb.RedisPool
+	RedisClient *redisdb.RedisPoolClient `inject:"demoRedisClient"`
 }
 
 func (c *SessionCache) Start() (err error) {
-	c.redisPool, err = redisdb.NewRedisPools(c.RedisConfig)
-	if err != nil {
-		return
-	}
 	return nil
 }
 
@@ -39,7 +34,7 @@ func (c *SessionCache) Set(sessionId string, v *Session) error {
 		return err
 	}
 
-	_, err = c.redisPool.SetNX(sessionId, string(data), sessionExpiredTs)
+	_, err = c.RedisClient.SetNX(sessionId, string(data), sessionExpiredTs)
 	if err != nil {
 		return err
 	}
@@ -48,7 +43,7 @@ func (c *SessionCache) Set(sessionId string, v *Session) error {
 }
 
 func (c *SessionCache) Get(sessionId string) (v *Session, err error) {
-	value, err := c.redisPool.Get(sessionId)
+	value, err := c.RedisClient.Get(sessionId)
 	if err != nil {
 		return nil, err
 	}
@@ -62,7 +57,7 @@ func (c *SessionCache) Get(sessionId string) (v *Session, err error) {
 }
 
 func (c *SessionCache) Del(sessionId string) error {
-	err := c.redisPool.Del(sessionId)
+	err := c.RedisClient.Del(sessionId)
 	if err != nil {
 		return err
 	}

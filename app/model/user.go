@@ -25,7 +25,7 @@ type User struct {
 }
 
 type UserDao struct {
-	MysqlClient *mysqldb.MysqlClient `inject:"mysqlClient"`
+	MysqlClient *mysqldb.MysqlClient `inject:"demoMysqlClient"`
 }
 
 func (u *UserDao) Start() error {
