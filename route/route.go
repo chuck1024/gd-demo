@@ -22,7 +22,7 @@ var (
 )
 
 func Register(e *gd.Engine) {
-	e.HttpServer.SetInit(func(g *gin.Engine) error {
+	e.SetHttpServer(func(g *gin.Engine) error {
 		r := g.Group("")
 		// swagger
 		ok := gd.Config("Swagger", "swagger").MustBool()
