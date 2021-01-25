@@ -8,8 +8,6 @@ package boot
 import (
 	"gd-demo/route"
 	"github.com/chuck1024/gd"
-	"github.com/chuck1024/gd/dlog"
-	"github.com/chuck1024/gd/runtime/inject"
 )
 
 func Run() {
@@ -17,9 +15,6 @@ func Run() {
 	d := gd.Default()
 
 	// init inject
-	inject.InitDefault()
-	inject.SetLogger(dlog.Global)
-	defer inject.Close()
 	Inject()
 
 	// route register

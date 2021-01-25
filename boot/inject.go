@@ -16,7 +16,7 @@ import (
 func Inject() {
 	// inject demoMysqlClient and init mysql client
 	inject.RegisterOrFail("demoMysqlClient",(*mysqldb.MysqlClient)(&mysqldb.MysqlClient{
-		DataBases: "demo",
+		DataBase: "demo",
 	}))
 
 	// inject demoRedisClient and init redis pool client
