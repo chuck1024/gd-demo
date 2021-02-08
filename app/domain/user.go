@@ -1,8 +1,8 @@
 package domain
 
 type DemoTestReq struct {
-	Name string `json:"name"`
-	Msg  string `json:"msg"`
+	Name string `json:"name" form:"name"`
+	Msg  string `json:"msg" form:"msg"`
 }
 
 type DemoTestRsp struct {
