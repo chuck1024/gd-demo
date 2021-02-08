@@ -6,7 +6,7 @@
 package boot
 
 import (
-	"gd-demo/route"
+	"gd-demo/app/route"
 	"github.com/chuck1024/gd"
 )
 

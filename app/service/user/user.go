@@ -6,6 +6,7 @@
 package user
 
 import (
+	"gd-demo/app/domain"
 	"gd-demo/app/model"
 	"gd-demo/app/service/sp"
 	"github.com/chuck1024/gd"
@@ -13,21 +14,6 @@ import (
 	"github.com/chuck1024/gd/utls"
 	"net/http"
 )
-
-type DemoTestReq struct {
-	Name string `json:"name"`
-	Msg  string `json:"msg"`
-}
-
-type DemoTestResp struct {
-	Msg string `json:"msg"`
-}
-
-type RegisterOrUpdateReq struct {
-	Passport string `json:"passport"`
-	Password uint64 `json:"password"`
-	Nickname string `json:"nickname"`
-}
 
 func RegisterOrUpdate(passport, nickname string, password uint64) error {
 	userInfo, err := sp.Get().UserModel.Query(passport)
@@ -52,16 +38,7 @@ func RegisterOrUpdate(passport, nickname string, password uint64) error {
 	return nil
 }
 
-type LoginReq struct {
-	Passport string `json:"passport"`
-	Password uint64 `json:"password"`
-}
-
-type LoginRes struct {
-	SessionId string `json:"sessionId"`
-}
-
-func Login(passport string, password uint64) (*LoginRes, error) {
+func Login(passport string, password uint64) (*domain.LoginRsp, error) {
 	userInfo, err := sp.Get().UserModel.Query(passport)
 	if err != nil {
 		gd.Error("Login UserModel.Query occur err:%v", err)
@@ -89,20 +66,10 @@ func Login(passport string, password uint64) (*LoginRes, error) {
 		return nil, derror.MakeCodeError(http.StatusInternalServerError, err)
 	}
 
-	return &LoginRes{SessionId: sessionId}, nil
+	return &domain.LoginRsp{SessionId: sessionId}, nil
 }
 
-type GetUserInfoReq struct {
-	Passport string `json:"passport"`
-}
-
-type GetUserInfoRes struct {
-	Passport string `json:"passport"`
-	Password uint64 `json:"password"`
-	Nickname string `json:"nickname"`
-}
-
-func GetUserInfo(passport string) (*GetUserInfoRes, error) {
+func GetUserInfo(passport string) (*domain.GetUserInfoRsp, error) {
 	userInfo, err := sp.Get().UserModel.Query(passport)
 	if err != nil {
 		gd.Error("GetUserInfo UserModel.Query occur err:%v", err)
@@ -113,7 +80,7 @@ func GetUserInfo(passport string) (*GetUserInfoRes, error) {
 		return nil, derror.NewCodeError(http.StatusBadRequest, "no data")
 	}
 
-	return &GetUserInfoRes{
+	return &domain.GetUserInfoRsp{
 		Passport: userInfo.Passport,
 		Password: userInfo.Password,
 		Nickname: userInfo.Nickname,

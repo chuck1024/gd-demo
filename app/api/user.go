@@ -6,6 +6,7 @@
 package api
 
 import (
+	"gd-demo/app/domain"
 	"gd-demo/app/model"
 	"gd-demo/app/service/middleware"
 	"gd-demo/app/service/user"
@@ -20,11 +21,11 @@ import (
 // @Tags 用户
 // @Accept application/json
 // @Produce json
-// @Param entity body user.DemoTestReq true "请求参数" required
+// @Param entity body domain.DemoTestReq true "请求参数" required
 // @Router /demo/v1/test [get]
-// @Success 200 {object} user.DemoTestResp
-func DemoTest(c *gin.Context, req *user.DemoTestReq) (code int, message string, err error, ret *user.DemoTestResp) {
-	ret = &user.DemoTestResp{
+// @Success 200 {object} domain.DemoTestRsp
+func DemoTest(c *gin.Context, req *domain.DemoTestReq) (code int, message string, err error, ret *domain.DemoTestRsp) {
+	ret = &domain.DemoTestRsp{
 		Msg: "test success ok!!!",
 	}
 
@@ -37,8 +38,8 @@ func DemoTest(c *gin.Context, req *user.DemoTestReq) (code int, message string, 
 // @Produce json
 // @Param cookie header string true "cookie" required
 // @Router /demo/v1/getUserInfo [get]
-// @Success 200 {object} user.GetUserInfoRes
-func GetUserInfo(c *gin.Context, req interface{}) (code int, message string, err error, ret *user.GetUserInfoRes) {
+// @Success 200 {object} domain.GetUserInfoRsp
+func GetUserInfo(c *gin.Context, req interface{}) (code int, message string, err error, ret *domain.GetUserInfoRsp) {
 	var passport string
 	v, ok := gl.Get(middleware.SessionIdCookie)
 	if ok {
@@ -67,10 +68,10 @@ func GetUserInfo(c *gin.Context, req interface{}) (code int, message string, err
 // @Tags 用户
 // @Accept application/json
 // @Produce json
-// @Param entity body user.RegisterOrUpdateReq true "请求参数" required
+// @Param entity body domain.RegisterOrUpdateReq true "请求参数" required
 // @Router /demo/v1/register [post]
 // @Success 200
-func RegisterOrUpdate(c *gin.Context, req *user.RegisterOrUpdateReq) (code int, message string, err error, ret interface{}) {
+func RegisterOrUpdate(c *gin.Context, req *domain.RegisterOrUpdateReq) (code int, message string, err error, ret interface{}) {
 	if req.Passport == "" || req.Password == 0 || req.Nickname == "" {
 		return http.StatusBadRequest, "passport null", nil, nil
 	}
@@ -88,10 +89,10 @@ func RegisterOrUpdate(c *gin.Context, req *user.RegisterOrUpdateReq) (code int, 
 // @Tags 用户
 // @Accept application/json
 // @Produce json
-// @Param entity body user.LoginReq true "请求参数" required
+// @Param entity body domain.LoginReq true "请求参数" required
 // @Router /demo/v1/login [post]
-// @Success 200 {object} user.LoginRes
-func Login(c *gin.Context, req *user.LoginReq) (code int, message string, err error, ret *user.LoginRes) {
+// @Success 200 {object} domain.LoginRsp
+func Login(c *gin.Context, req *domain.LoginReq) (code int, message string, err error, ret *domain.LoginRsp) {
 	if req.Passport == "" || req.Password == 0 {
 		return http.StatusBadRequest, "passport null", nil, nil
 	}
